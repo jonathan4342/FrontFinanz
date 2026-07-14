@@ -37,13 +37,21 @@ function TicketsPage() {
 
   return (
     <section>
-      <h2>Tickets</h2>
       <TicketForm clients={clients} onSubmit={handleCreate} />
-      {loading ? (
-        <p>Cargando...</p>
-      ) : (
-        <TicketList tickets={tickets} onStatusChange={handleStatusChange} />
-      )}
+      <div className="card">
+        <div className="card__header">
+          <h3 className="card__title">Tickets {!loading && `(${tickets.length})`}</h3>
+        </div>
+        {loading ? (
+          <p className="empty">Cargando…</p>
+        ) : (
+          <TicketList
+            tickets={tickets}
+            clients={clients}
+            onStatusChange={handleStatusChange}
+          />
+        )}
+      </div>
     </section>
   )
 }

@@ -26,14 +26,33 @@ function ClientForm({ onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Registrar cliente</h3>
-      <input name="name" placeholder="Nombre" value={form.name} onChange={handleChange} required />
-      <input name="email" type="email" placeholder="Correo" value={form.email} onChange={handleChange} required />
-      <input name="company" placeholder="Empresa" value={form.company} onChange={handleChange} required />
-      <button type="submit" disabled={saving}>{saving ? 'Guardando...' : 'Crear'}</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+    <div className="card">
+      <div className="card__header">
+        <h3 className="card__title">Registrar cliente</h3>
+      </div>
+      <div className="card__body">
+        <form onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <div className="field">
+              <label htmlFor="c-name">Nombre</label>
+              <input id="c-name" name="name" placeholder="Ana Torres" value={form.name} onChange={handleChange} required />
+            </div>
+            <div className="field">
+              <label htmlFor="c-email">Correo</label>
+              <input id="c-email" name="email" type="email" placeholder="ana@empresa.com" value={form.email} onChange={handleChange} required />
+            </div>
+            <div className="field">
+              <label htmlFor="c-company">Empresa</label>
+              <input id="c-company" name="company" placeholder="Acme" value={form.company} onChange={handleChange} required />
+            </div>
+            <button className="btn" type="submit" disabled={saving}>
+              {saving ? 'Guardando…' : 'Crear cliente'}
+            </button>
+          </div>
+          {error && <p className="form-error">{error}</p>}
+        </form>
+      </div>
+    </div>
   )
 }
 
