@@ -7,18 +7,36 @@ function App() {
   const [tab, setTab] = useState('clients')
 
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: 16, fontFamily: 'sans-serif' }}>
-      <h1>Gestión de Clientes y Tickets</h1>
-      <nav style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <button onClick={() => setTab('clients')} disabled={tab === 'clients'}>
-          Clientes
-        </button>
-        <button onClick={() => setTab('tickets')} disabled={tab === 'tickets'}>
-          Tickets
-        </button>
-      </nav>
-      {tab === 'clients' ? <ClientsPage /> : <TicketsPage />}
-    </div>
+    <>
+      <header className="app-header">
+        <div className="app-header__inner">
+          <div className="app-header__logo">F</div>
+          <div>
+            <h1 className="app-header__title">Finanz · Soporte</h1>
+            <p className="app-header__subtitle">Gestión de clientes y tickets</p>
+          </div>
+        </div>
+      </header>
+
+      <main className="container">
+        <div className="tabs">
+          <button
+            className={`tab ${tab === 'clients' ? 'tab--active' : ''}`}
+            onClick={() => setTab('clients')}
+          >
+            Clientes
+          </button>
+          <button
+            className={`tab ${tab === 'tickets' ? 'tab--active' : ''}`}
+            onClick={() => setTab('tickets')}
+          >
+            Tickets
+          </button>
+        </div>
+
+        {tab === 'clients' ? <ClientsPage /> : <TicketsPage />}
+      </main>
+    </>
   )
 }
 

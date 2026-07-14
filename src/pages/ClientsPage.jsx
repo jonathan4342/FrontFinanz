@@ -28,9 +28,17 @@ function ClientsPage() {
 
   return (
     <section>
-      <h2>Clientes</h2>
       <ClientForm onSubmit={handleCreate} />
-      {loading ? <p>Cargando...</p> : <ClientList clients={clients} />}
+      <div className="card">
+        <div className="card__header">
+          <h3 className="card__title">Clientes {!loading && `(${clients.length})`}</h3>
+        </div>
+        {loading ? (
+          <p className="empty">Cargando…</p>
+        ) : (
+          <ClientList clients={clients} />
+        )}
+      </div>
     </section>
   )
 }
