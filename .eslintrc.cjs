@@ -15,5 +15,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    // No usamos PropTypes en esta prueba; la validación de tipos queda fuera de alcance.
+    'react/prop-types': 'off',
   },
 }
